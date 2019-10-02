@@ -31,9 +31,11 @@ class WarningHandler:
             self.state.document.reporter.warning(raw_text, line=self.context['lineno'])
         ]
 
-    def format(self, text: str) -> str:
-        return text.format(**self.context)
-
+    def format(self, text):
+        try:
+            return text.format(**self.context)
+        except Exception as e:
+            return "Failed to format raw text with exception: " + e
 
 def create_warning(project_info: Optional[ProjectInfo], state, lineno: int,
                    **kwargs) -> WarningHandler:
