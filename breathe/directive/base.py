@@ -35,7 +35,7 @@ class WarningHandler:
         try:
             return text.format(**self.context)
         except Exception as e:
-            return "Failed to format raw text with exception: " + e
+            return "Failed to format raw text with exception: " + str(e)
 
 def create_warning(project_info: Optional[ProjectInfo], state, lineno: int,
                    **kwargs) -> WarningHandler:
