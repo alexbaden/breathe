@@ -90,7 +90,7 @@ def format_directive(package_type, package, project):
     directive = '.. doxygen%s:: %s\n' % (package_type, package)
     if project:
         directive += '   :project: %s\n' % project
-    if package_type == 'class':
+    if package_type == 'class' or package_type == 'struct':
         directive += '   :members:\n'
         directive += '   :protected-members:\n'
         directive += '   :private-members:\n'
